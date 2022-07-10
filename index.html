@@ -7,7 +7,6 @@
 <body>
     <header>
         <h1>PlatziMediaPlayer.js</h1>
-        <p>An extensible media player.</p>
     </header>
 
     <main class="container">
@@ -19,19 +18,21 @@
     </main>
 
     <script>
-        const video = document.querySelector('video');
-        const player = new MediaPlayer({ el: video });
+        const video = document.querySelector("video");
+        const buttonPlay = document.querySelector("button");
         
         function MediaPlayer(config) {
-            this.media = config.el;
+            this.media = config.element;
         }
 
         MediaPlayer.prototype.play = function () {
-            this.media.play();
+            this.media.paused ? this.media.play() : this.media.pause();
         };
 
-        const button = document.querySelector('button');
-        button.onclick = () => player.togglePlay();
+        const player = new MediaPlayer({ element: video });
+        buttonPlay.onclick = () => player.play();
+
+        
     </script>
 </body>
 
